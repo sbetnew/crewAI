@@ -40,7 +40,7 @@ pesquisa_task = Task(
     Inclua estatísticas recentes e tendências. IMPORTANTE: Todo conteúdo deve ser em português brasileiro.""",
     expected_output="Um relatório em português com 5-6 parágrafos contendo fatos e dados relevantes.",
     agent=pesquisador,
-    output_file="pesquisa_ia.md"  # Opcional: salva em arquivo
+    output_file="output/pesquisa_ia.md"  # Opcional: salva em arquivo
 )
 
 redacao_task = Task(
