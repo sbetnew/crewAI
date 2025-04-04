@@ -3,14 +3,14 @@ from dotenv import load_dotenv
 from crewai import Agent, Task, Crew
 from langchain_groq import ChatGroq
 
-# 1. Configuração inicial
+# 1. Configuração inicial - carregar variaveis do ambiente
 load_dotenv()
 
 # 2. Configurar o LLM com instrução de idioma
 llm = ChatGroq(
     model="groq/llama3-70b-8192",
     groq_api_key=os.getenv("GROQ_API_KEY"),
-    temperature=0.6
+    temperature=0.6    # 0 a 1 indica o grau de alucinação
 )
 
 # 3. Criar Agentes com instruções em português
@@ -49,6 +49,7 @@ redacao_task = Task(
     IMPORTANTE: Todo conteúdo deve ser em português brasileiro coloquial.""",
     expected_output="Artigo completo em português com pelo menos 3 parágrafos e um título criativo.",
     agent=redator,
+    output_file="output/redacao_ia.md",
     context=[pesquisa_task]  # Recebe o resultado da pesquisa
 )
 
@@ -56,7 +57,7 @@ redacao_task = Task(
 equipe_blog = Crew(
     agents=[pesquisador, redator],
     tasks=[pesquisa_task, redacao_task],
-    verbose=True
+    verbose=True  #habilitar DEBUG
 )
 
 # 6. Executar
@@ -72,9 +73,11 @@ except Exception as e:
 
 
 # Como Funciona:
+
+# Gerador de conteúdos de Blog
 # Dois Agentes Especializados:
-# Pesquisador: Busca informações atualizadas
-# Redator: Transforma os dados em conteúdo atraente
+# - Pesquisador: Busca informações atualizadas
+# - Redator: Transforma os dados em conteúdo atraente
 
 # Fluxo Automatizado:
 # A pesquisa é feita primeiro
@@ -85,7 +88,7 @@ except Exception as e:
 # Basta mudar o tópico na pesquisa_task para gerar conteúdo sobre outros assuntos
 
 #ATIVIDADE:
-# Adicione um terceiro agente para revisão gramatical
-# Implemente saída em formato Markdown
-# Adicione pesquisa na web integrada
-# Salve os resultados em arquivos
+# Adicione um terceiro agente Tradutor (saída do redator e traduzir para inglês)
+# Salvar a saída em um arquivo .md
+
+# LLM - Crew - Agents - Tasks

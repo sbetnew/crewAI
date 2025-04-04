@@ -25,7 +25,6 @@ Sistema automatizado para geração de conteúdo em português utilizando agente
 
 <div align="center"> <sub>Criado com ❤️ por Sabrina Bet</sub> </div>
 
-
 <hr>
 
 **Como Funciona na Prática:**
