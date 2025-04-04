@@ -1,7 +1,7 @@
 # 🚀 Projeto CrewAI - Gerador de Conteúdo Automatizado
 
 <div align="center">
-  <img src="https://crewai.io/wp-content/uploads/2023/11/CrewAI-logo-white.png" width="300" alt="CrewAI Logo">
+  <img src="https://mintlify.s3.us-west-1.amazonaws.com/crewai/crew_only_logo.png" width="300" alt="CrewAI Logo">
 </div>
 
 ## 📋 Visão Geral
@@ -24,7 +24,6 @@ Sistema automatizado para geração de conteúdo em português utilizando agente
 - Conta no [Groq Cloud](https://console.groq.com/)
 
 <div align="center"> <sub>Criado com ❤️ por Sabrina Bet</sub> </div>
-
 
 <hr>
 
