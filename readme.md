@@ -1,7 +1,7 @@
 # 🚀 Projeto CrewAI - Gerador de Conteúdo Automatizado
 
 <div align="center">
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/crewai/crew_only_logo.png" width="300" alt="CrewAI Logo">
+  <img src="https://media.licdn.com/dms/image/v2/D4D12AQE88NdPMRH-Lw/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1715302082269?e=2147483647&v=beta&t=qzfY-i7VTiIIOpaQ8kDHApida_Nj3mu62C_c4licItw" width="300" alt="CrewAI Logo">
 </div>
 
 ## 📋 Visão Geral
