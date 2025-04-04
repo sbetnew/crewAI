@@ -34,6 +34,16 @@ redator = Agent(
     allow_delegation=False
 )
 
+corretor = Agent(
+    role="Revisor Gramatical",
+    goal="Corrigir textos gerados por outros agentes",
+    backstory="""Voce eh um linguista renomado com interesse por IA e foi chamado por conhecidos para auxilia-los numa jornada de estudos
+    e criacao relacionados a IA""",
+    verbose=True,
+    llm=llm,
+    allow_delegation=False
+)
+
 # 4. Criar Tarefas com instruções explícitas de idioma
 pesquisa_task = Task(
     description="""Realize uma pesquisa detalhada em português sobre os impactos da IA no mercado de trabalho em 2024.
@@ -52,10 +62,18 @@ redacao_task = Task(
     context=[pesquisa_task]  # Recebe o resultado da pesquisa
 )
 
+revisao_task = Task(
+    description=""""Com base no texto gerado que foi baseado na pesquisa, revise e proponha melhorias, gerando um arquivo .md""",
+    expected_output="Artigo completo POREM com portugues escrito corretamente, por mais que seja coloquial",
+    agent=corretor,
+    context=[redacao_task],
+    output_file="output/revisao_artigo.md"
+)
+
 # 5. Criar a Equipe (Crew)
 equipe_blog = Crew(
-    agents=[pesquisador, redator],
-    tasks=[pesquisa_task, redacao_task],
+    agents=[pesquisador, redator, corretor],
+    tasks=[pesquisa_task, redacao_task, revisao_task],
     verbose=True
 )
 
@@ -71,6 +89,13 @@ except Exception as e:
     print(f"\n❌ Erro: {e}")
 
 
+#ATIVIDADE:
+# Adicione um terceiro agente para revisão gramatical
+# Implemente saída em formato Markdown
+# Adicione pesquisa na web integrada
+# Salve os resultados em arquivos
+
+
 # Como Funciona:
 # Dois Agentes Especializados:
 # Pesquisador: Busca informações atualizadas
@@ -83,9 +108,3 @@ except Exception as e:
 
 # Personalização Fácil:
 # Basta mudar o tópico na pesquisa_task para gerar conteúdo sobre outros assuntos
-
-#ATIVIDADE:
-# Adicione um terceiro agente para revisão gramatical
-# Implemente saída em formato Markdown
-# Adicione pesquisa na web integrada
-# Salve os resultados em arquivos
