@@ -11,17 +11,42 @@ Sistema automatizado para geração de conteúdo em português utilizando agente
 - **Pesquisador**: Coleta dados e informações atualizadas
 - **Redator**: Produz artigos completos e engajadores
 
-## ✨ Funcionalidades
+## Funcionalidades
 
-- ✅ Geração de conteúdo 100% em português
-- ✅ Fluxo automatizado pesquisa → redação
-- ✅ Saída formatada em Markdown
-- ✅ Configuração simplificada
+- Geração de conteúdo 100% em português
+- Fluxo automatizado pesquisa → redação
+- Saída formatada em Markdown
+- Configuração simplificada
 
-## 🛠️ Pré-requisitos
+## Pré-requisitos
 
-- Python 3.10+
+- Python 3.13
 - Conta no [Groq Cloud](https://console.groq.com/)
+
+## Instalação
+Versão 12
+https://www.python.org/ftp/python/3.12.9/python-3.12.9-amd64.exe
+
+- Clone do código git
+  >> git clone https://github.com/sbetnew/crewAI.git 
+
+- Criar Pasta Output
+- Renomear .env.example   para   .env
+- Incluir a Chave GROQ no .env (https://console.groq.com/)
+- CTRL + J (Abrir terminal)
+- Verificar Versão Python:   >> python --version    //Precisa ser a versão 3.12
+
+- Configure ambiente virtual
+  >>  py -3.12 -m venv venv
+  >>  venv\Scripts\activate
+
+- Instalar os Requerimentos
+  >> pip install -r requirements.txt
+
+- Executar o main.py
+
+<hr>
+
 
 <div align="center"> <sub>Criado com ❤️ por Sabrina Bet</sub> </div>
 
