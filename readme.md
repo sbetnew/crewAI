@@ -48,7 +48,7 @@ https://www.python.org/ftp/python/3.12.9/python-3.12.9-amd64.exe
 <hr>
 
 
-<div align="center"> <sub>Criado com ❤️ por Sabrina Bet</sub> </div>
+<div align="center"> <sub>Criado com ❤️ por Sabrina Bet<br>https://www.linkedin.com/in/sabrina-bet/</sub> </div>
 
 <hr>
 
