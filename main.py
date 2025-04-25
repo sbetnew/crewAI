@@ -8,7 +8,7 @@ load_dotenv()
 
 # 2. Configurar o LLM com instrução de idioma
 llm = ChatGroq(
-    model="groq/llama3-70b-8192",
+    model="groq/meta-llama/llama-4-scout-17b-16e-instruct",
     groq_api_key=os.getenv("GROQ_API_KEY"),
     temperature=0.6    # 0 a 1 indica o grau de alucinação
 )
@@ -34,6 +34,17 @@ redator = Agent(
     allow_delegation=False
 )
 
+tradutor = Agent(
+    role="Tradutor Profissional",
+    goal="Traduzir textos do português para o inglês de forma fluente e natural",
+    backstory="""Você é um tradutor profissional bilíngue com domínio completo de português e inglês. 
+    Seu objetivo é manter a fidelidade do texto original com fluência nativa em inglês.""",
+    verbose=True,
+    llm=llm,
+    allow_delegation=False,
+    output_file="output/traducao.md"
+)
+
 # 4. Criar Tarefas com instruções explícitas de idioma
 pesquisa_task = Task(
     description="""Realize uma pesquisa detalhada em português sobre os impactos da IA no mercado de trabalho em 2024.
@@ -53,10 +64,19 @@ redacao_task = Task(
     context=[pesquisa_task]  # Recebe o resultado da pesquisa
 )
 
+traducao_task = Task(
+    description="""Traduza o artigo de blog gerado anteriormente do português para o inglês.
+    Mantenha o estilo e tom originais, mas garanta fluência natural em inglês.""",
+    expected_output="Tradução completa do artigo para o inglês, com título e estrutura preservados.",
+    agent=tradutor,
+    context=[redacao_task],
+    output_file="output/redacao_ia_en.md"
+)
+
 # 5. Criar a Equipe (Crew)
 equipe_blog = Crew(
-    agents=[pesquisador, redator],
-    tasks=[pesquisa_task, redacao_task],
+    agents=[pesquisador, redator, tradutor],
+    tasks=[pesquisa_task, redacao_task, traducao_task],
     verbose=True  #habilitar DEBUG
 )
 
